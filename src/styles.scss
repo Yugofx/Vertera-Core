@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'app/styles/vars';
+@import 'app/styles/libs';
+@import 'app/styles/icons';
+@import 'app/styles/typography';
+@import 'app/styles/forms';
+
+::placeholder {
+  color: #666;
+}
+
+::selection {
+  background-color: $accent;
+  color: #fff;
+}
+
+html, body {
+  display: block;
+  height: 100%;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 16px;
+  min-width: 320px;
+  position: relative;
+  line-height: 1.65;
+  font-family: $main-font;
+  color: $basic;
+  overflow-x: hidden;
+  input, textarea {
+    border: #666 1px solid;
+    outline: none;
+  }
+}
+
+a {
+  &, &:hover, &:active, &:focus {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+button {
+  outline: 0;
+  border: 0;
+  background: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+@import 'app/styles/elements';
+@import 'app/styles/media';

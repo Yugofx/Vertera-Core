@@ -1,0 +1,9 @@
+<wor-tabs>
+  <wor-tab [componentRef]="cardComponent">
+    {{ isSM ? 'На карту' : 'На банковскую карту' }}
+  </wor-tab>
+  <wor-tab [componentRef]="transferComponent">
+    {{ isSM ? 'Банк. перевод' : 'Банковский перевод' }}
+  </wor-tab>
+  <wor-tab [componentRef]="officeComponent">Обменники</wor-tab>
+</wor-tabs>

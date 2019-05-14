@@ -1,0 +1,14 @@
+<div class="steps">
+  <nav class="steps-nav -small">
+    <ul>
+      <li *ngFor="let step of steps">
+        <a [routerLink]="step.route"
+           class="link h-grt ttu"
+           routerLinkActive="-active">
+          {{ step.label }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<router-outlet></router-outlet>

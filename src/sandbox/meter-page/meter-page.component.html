@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="form-group">
+    <label for="password" class="form-group-name">Пароль</label>
+    <div class="form-group-controls">
+      <div class="form-control-icons">
+        <input type="password"
+               wor-input
+               id="password"
+               #pwd>
+        <i class="icon ic-eye"></i>
+      </div>
+      <wor-meter [value]="pwd.value"></wor-meter>
+    </div>
+  </div>
+</div>

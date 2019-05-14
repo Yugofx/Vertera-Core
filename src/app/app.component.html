@@ -1,0 +1,157 @@
+<header class="header">
+  <div class="topLine">
+    <div class="container">
+      <nav class="header-nav">
+        <ul>
+          <li *ngFor="let item of articles">
+            <a [routerLink]="item.link" class="link">
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <wor-dropdown class="lang" [label]="isXS ? activeLanguage.shortLabel : activeLanguage.fullLabel">
+        <ul>
+          <li *ngFor="let language of languages">
+            <button (click)="setActiveLanguage(language.code)">
+              {{ language.fullLabel }}
+            </button>
+          </li>
+        </ul>
+      </wor-dropdown>
+    </div>
+  </div>
+  <div class="middleLine">
+    <div class="container">
+      <div class="header-logo">
+        <a routerLink="/" class="logo">
+						<span class="logo-image">
+							<img src="../assets/logo.png" alt="Мир Торговли - СПЗ">
+						</span>
+          <span class="logo-text">
+							<i class="ic ic-logo-title"></i>
+							<span>СПЗ</span>
+						</span>
+        </a>
+      </div>
+      <div class="header-links">
+        <div class="link-wrapper">
+          <a routerLink="/market" class="link h-grt">Пункт Обмена</a>
+        </div>
+        <div class="link-wrapper">
+          <a routerLink="/transfer" class="link h-grt">Перевод СПЗ</a>
+        </div>
+      </div>
+      <div class="header-profile">
+        <wor-dropdown class="login"
+                      [label]="isXS ? '' : 'Личный кабинет'"
+                      labelIcon="ic-user" #profileDropdown>
+          <ul>
+            <ng-container *ngFor="let item of profileMenuRoutes">
+              <li *ngIf="item.authorized === isAuthorized"
+                  (click)="profileDropdown.close()">
+                <a [routerLink]="item.route" class="link">
+                <span class="link-icons">
+                  <i [class]="'icon ic-' + item.icon"></i>
+                </span>
+                  <span>{{ item.label }}</span>
+                </a>
+              </li>
+            </ng-container>
+            <li>
+              <button (click)="logout()" class="link">
+                Выйти
+              </button>
+            </li>
+          </ul>
+
+        </wor-dropdown>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrapper" [class.-not-found]="isNotFoundPage">
+  <div class="container no-padding">
+    <aside class="navbar-extra" *ngIf="isAuthorized && isXS">
+      <wor-card widget>
+        <wor-user-widget></wor-user-widget>
+      </wor-card>
+    </aside>
+    <div class="content">
+      <router-outlet (activate)="onActivate($event)"></router-outlet>
+    </div>
+    <aside class="navbar" [class.-first]="isAuthorized">
+      <wor-card widget *ngIf="isAuthorized && !isXS">
+        <wor-user-widget></wor-user-widget>
+      </wor-card>
+      <wor-card widget>
+        <wor-tabs>
+          <wor-tab [componentRef]="widgets.currency">Курс СПЗ</wor-tab>
+          <wor-tab [componentRef]="widgets.calculator">Калькулятор</wor-tab>
+        </wor-tabs>
+      </wor-card>
+    </aside>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">
+      <a href="#" class="logo">
+        <img src="../assets/logo.png" alt="СПЗ" class="logo-img">
+        <div class="logo-title">
+          Мир торговли
+        </div>
+        <div class="logo-text">
+          СПЗ
+        </div>
+      </a>
+    </div>
+    <div class="footer-nav">
+      <dl class="item">
+        <dt class="item-title">СПЗ</dt>
+        <dd><a routerLink="/market/buy" class="link">Купить СПЗ</a></dd>
+        <dd><a routerLink="/market/sell" class="link">Продать СПЗ</a></dd>
+        <dd><a routerLink="/transfer" class="link">Перевести СПЗ</a></dd>
+      </dl>
+      <dl class="item">
+        <dt class="item-title">Поможем</dt>
+        <dd><a href="#" class="link">Помощь</a></dd>
+      </dl>
+      <dl class="item">
+        <dt class="item-title">Будь на связи</dt>
+        <dd><strong><a [href]="'tel:+' + config.phoneNumber">
+          {{ config.phoneNumber | phone }}
+        </a></strong><span>24/7</span></dd>
+        <div class="follow-news">
+          <div class="item">
+							<span class="item-text">Следи за последними
+								новостями в социальных сетях</span>
+            <div class="item-list">
+              <a href="#" class="ic-circle" *ngFor="let s of config.socials">
+                <i [class]="'icon ic-' + s"></i>
+              </a>
+            </div>
+          </div>
+          <span class="follow-news-text">
+							<a href="#" alt="Все контакты" class="link">Все контакты</a>
+						</span>
+        </div>
+      </dl>
+    </div>
+    <div class="footer-paying">
+      <dl class="item">
+        <dt class="item-title">Способы оплаты</dt>
+        <div class="item-icons">
+          <i *ngFor="let option of config.paymentMethods"
+             [class]="'ic ic-' + option"></i>
+        </div>
+      </dl>
+    </div>
+    <div class="footer-copyright">
+      <div class="copyright">{{ config.copyright }}</div>
+    </div>
+
+  </div>
+</footer>

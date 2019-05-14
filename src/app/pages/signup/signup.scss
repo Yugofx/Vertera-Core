@@ -1,0 +1,146 @@
+@import "../../styles/vars";
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  @include media-breakpoint-down(xs) {
+    display: block;
+  }
+  .title {
+    flex: 2;
+    padding-right: 15px;
+    letter-spacing: 0;
+  }
+  &-tip {
+    color: #828282;
+    .link {
+      color: $basic;
+      @include media-breakpoint-down(xs) {
+        text-transform: none;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      margin-top: 11px;
+    }
+    @include media-breakpoint-down(xs) {
+      text-transform: none;
+      margin-top: 10px;
+    }
+  }
+  .text {
+    display: block;
+    width: 100%;
+    margin-top: 11px;
+    &.-small {
+      font-size: 14px;
+      line-height: 18px;
+      color: #828282;
+    }
+  }
+  .link-dotted {
+    &:hover {
+      color: #A310B0 !important;
+      border-color: #A310B0;
+      background: linear-gradient(90deg, #3706AD 0%, #A310B0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      &:hover {
+        background: none;
+      }
+    }
+  }
+}
+
+wor-card {
+  margin-bottom: 4rem;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  .-right {
+    margin-left: auto;
+    @include media-breakpoint-down(xs) {
+      order: -1;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.menu {
+  &-options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .text {
+    font-size: 16px;
+    line-height: 21px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  a {
+    display: block;
+    + a {
+      margin-top: 4rem;
+    }
+    @include media-breakpoint-down(xs) {
+      width: 100%;
+    }
+  }
+  wor-card {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    width: 320px;
+    height: 104px;
+    color: rgba(255,255,255,.5);
+    position: relative;
+    cursor: pointer;
+    transition: color .25s ease;
+    margin-bottom: 0;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 20px;
+      width: 20px;
+      height: 20px;
+      background: url("../../../assets/icons/ic-angle-large.svg") no-repeat center;
+      background-size: contain;
+      opacity: 0.5;
+      transition: opacity 0.25s ease;
+    }
+    @include media-breakpoint-down(md) {
+      &.-no-max-width {
+        max-width: none;
+      }
+    }
+    @include media-breakpoint-down(xs) {
+      width: 100%;
+      font-size: 14px;
+      line-height: 18px;
+    }
+    span {
+      display: inline-block;
+      text-transform: uppercase;
+      margin-left: 2rem;
+    }
+    &:hover {
+      color: #fff;
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}

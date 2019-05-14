@@ -1,0 +1,53 @@
+<header class="header -row">
+  <h2 class="h2 title">Заявка {{ order.id }}</h2>
+  <div class="status h5 ttu">
+    Статус: <span class="basic">{{ dict[order.status] }}</span>
+  </div>
+</header>
+<wor-card>
+  <ul class="features features-table">
+    <li>
+      <span class="features-name">ID транзакции</span>
+      <span class="features-value">{{ order.id }}</span>
+    </li>
+    <li>
+      <span class="features-name">Дата заявки</span>
+      <span class="features-value">{{ order.created_at | date:'dd.MM.yyyy' }}</span>
+    </li>
+    <li>
+      <span class="features-name">Тип операции</span>
+      <span class="features-value">{{ dict[order.operation] }}</span>
+    </li>
+    <li>
+      <span class="features-name">Отправитель</span>
+      <p class="features-value">
+        <span>{{ order.sender.wallet_number + ' ' }}</span><span>{{ order.sender.user }}</span>
+      </p>
+    </li>
+    <li>
+      <span class="features-name">Получатель</span>
+      <p class="features-value">
+        <span>{{ order.receiver.wallet_number + ' ' }}</span><span>{{ order.receiver.user }}</span>
+      </p>
+    </li>
+    <li>
+      <span class="features-name">Комиссия, %</span>
+      <span class="features-value">{{ order.commission + '%' }}</span>
+    </li>
+    <li>
+      <span class="features-name">Комиссия</span>
+      <span class="features-value">{{ (order.spz * order.commission / 100) | currency:order.code:'СПЗ':'1.0-4':'ru' }}</span>
+    </li>
+    <li>
+      <span class="features-name">Итоговая сумма</span>
+      <span class="features-value">{{ order.spz + (order.spz * order.commission / 100) | currency:order.code:'СПЗ':'1.0-4':'ru' }}</span>
+    </li>
+  </ul>
+</wor-card>
+<footer class="footer">
+  <button wor-button-stroke
+          (click)="back()"
+          color="blank">
+    Вернуться назад
+  </button>
+</footer>

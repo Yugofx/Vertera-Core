@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="label">Default checkbox</div>
+  <div class="value">
+    <wor-checkbox (change)="onChange($event)">Check this box</wor-checkbox>
+  </div>
+  <div class="output">Output: {{ checked }}</div>
+</div>
+
+<div class="row">
+  <div class="label">Checked by default</div>
+  <div class="value">
+    <wor-checkbox [checked]="true">
+      Checked by default
+    </wor-checkbox>
+  </div>
+</div>
+
+<div class="row">
+  <div class="label">Disabled by default</div>
+  <div class="value">
+    <wor-checkbox [disabled]="true">
+      Check this box
+    </wor-checkbox>
+  </div>
+</div>
+
+<div class="row">
+  <div class="label">Checkbox with label before box</div>
+  <div class="value">
+    <wor-checkbox labelPosition="before">Check this box</wor-checkbox>
+  </div>
+</div>

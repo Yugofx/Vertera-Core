@@ -1,0 +1,20 @@
+<wor-card [openBordersOnMobile]="true">
+  <div class="form-group">
+    <label for="amount" class="form-group-name">Введите сумму на покупку СПЗ:</label>
+    <div class="form-group-controls double-controls">
+      <input wor-input
+             (input)="onInput($event)"
+             type="text"
+             id="amount"
+             placeholder="Сумма">
+      <div class="fill">
+        <wor-select (valueChange)="onSelectCurrency($event)">
+          <wor-option *ngFor="let c of currencies"
+                      [value]="c.code"
+                      [viewOption]="c.label + ' (' + c.code + ')'">
+          </wor-option>
+        </wor-select>
+      </div>
+    </div>
+  </div>
+</wor-card>

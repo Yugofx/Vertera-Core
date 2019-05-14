@@ -1,0 +1,28 @@
+@import '../../../../styles/vars';
+
+.header {
+  margin-bottom: 40px;
+  &.-row {
+    display: flex;
+    align-items: center;
+    @include media-breakpoint-down(xs) {
+      display: block;
+      .status {
+        margin-top: 10px;
+      }
+    }
+  }
+  .status {
+    margin-left: auto;
+    color: #828282;
+    span {
+      color: #333;
+    }
+  }
+}
+wor-card {
+  margin-bottom: 40px;
+  @include media-breakpoint-down(sm) {
+    border: 1px solid #e0e0e0;
+  }
+}

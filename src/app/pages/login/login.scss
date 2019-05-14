@@ -1,0 +1,65 @@
+@import "../../styles/vars";
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 3.7rem;
+  @include media-breakpoint-down(sm) {
+    display: block;
+  }
+  .title {
+    flex: 2;
+    padding-right: 15px;
+    letter-spacing: 0;
+  }
+  &-tip {
+    color: #828282;
+    .link {
+      color: $basic;
+      @include media-breakpoint-down(xs) {
+        text-transform: none;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      margin-top: 11px;
+    }
+    @include media-breakpoint-down(xs) {
+      text-transform: none;
+      margin-top: 10px;
+    }
+  }
+  .link-dotted {
+    &:hover {
+      color: #A310B0 !important;
+      border-color: #A310B0;
+      background: linear-gradient(90deg, #3706AD 0%, #A310B0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      &:hover {
+        background: none;
+      }
+    }
+  }
+}
+
+wor-card {
+  margin-bottom: 4rem;
+  iframe {
+    display: block;
+    width: 100%;
+    min-height: 500px;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.footer {
+  display: flex;
+  .-right {
+    margin-left: auto;
+  }
+}

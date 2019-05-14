@@ -1,0 +1,39 @@
+<wor-card [divided]="true" [openBordersOnMobile]="true">
+  <div class="left">
+    <div class="form">
+      <div class="form-group">
+        <label class="form-group-name">Введите количество СПЗ для покупки:</label>
+        <div class="form-group-controls double-controls">
+          <input wor-input
+                 type="text"
+                 (input)="onInput($event)"
+                 class="form-control"
+                 placeholder="Сумма">
+          <div class="fill">
+            <span class="ttu">СПЗ</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-group-name">Выберите валюту для покупки СПЗ:</label>
+        <div class="form-group-controls">
+          <wor-select (valueChange)="onCodeChange($event)">
+            <wor-option *ngFor="let c of currencies"
+                        [value]="c.code"
+                        [viewOption]="c.label + ' (' + c.code + ')'">
+            </wor-option>
+          </wor-select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="title h4 ttu">Стоимость указанного СПЗ</div>
+    <ul class="features">
+      <li *ngFor="let item of currencies" [class.-active]="activeCode === item.code">
+        <span class="features-name">{{ item.label }}</span>
+        <span class="features-value">{{ getSum(item.rate) || 0 | currency:item.code:item.code:'1.0-4':'ru' }}</span>
+      </li>
+    </ul>
+  </div>
+</wor-card>

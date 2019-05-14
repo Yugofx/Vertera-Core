@@ -1,0 +1,9 @@
+@import '../../../styles/vars';
+
+button[wor-button-raised] {
+  @include media-breakpoint-down(xs) {
+    width: auto;
+    height: 32px;
+    line-height: 32px;
+  }
+}

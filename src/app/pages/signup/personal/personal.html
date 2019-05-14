@@ -1,0 +1,73 @@
+<wor-card [openBordersOnMobile]="true">
+  <form class="form" [formGroup]="registrationForm">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name" class="form-group-name">Имя</label>
+        <div class="form-group-controls">
+          <input wor-input
+                 [formControl]="name"
+                 type="text"
+                 id="name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="surname" class="form-group-name">Фамилия</label>
+        <div class="form-group-controls">
+          <input wor-input
+                 [formControl]="surname"
+                 type="text"
+                 id="surname">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="form-group-name">Электронная почта</label>
+      <div class="form-group-controls">
+        <input wor-input
+               [formControl]="email"
+               type="email"
+               id="email">
+      </div>
+    </div>
+    <div class="form-row -nowrap">
+      <div class="form-group-name">Мобильный телефон</div>
+      <div class="form-group -narrow">
+        <wor-select #code>
+          <wor-option [selected]="true" value="+7" viewOption="Россия (+7)"></wor-option>
+          <wor-option [selected]="true" value="+359" viewOption="Болгария (+359)"></wor-option>
+          <wor-option value="+1" viewOption="Соединенный Штаты Америки (+1)"></wor-option>
+        </wor-select>
+      </div>
+      <div class="form-group -wide">
+        <input wor-input
+               [formControl]="tel"
+               type="tel">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="form-group-name">Пароль</label>
+      <div class="form-group-controls">
+        <div class="form-control-icons">
+          <input [type]="showPassword ? 'text' : 'password'"
+                 [formControl]="password"
+                 wor-input
+                 id="password">
+          <i class="icon ic-eye"
+             [class.-active]="showPassword"
+             (click)="togglePasswordVisibility()"></i>
+        </div>
+        <wor-meter [value]="password.value"></wor-meter>
+      </div>
+    </div>
+  </form>
+</wor-card>
+<footer class="footer">
+  <button class="-right"
+          wor-button-raised
+          color="accent"
+          (click)="submit()">
+    Зарегистрироваться
+  </button>
+</footer>
+

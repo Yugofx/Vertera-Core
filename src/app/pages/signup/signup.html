@@ -1,0 +1,26 @@
+<header class="header">
+  <h1 class="h1 title">Регистрация</h1>
+  <div class="header-tip h5 ttu">
+    Уже есть учетная запись?
+    <a routerLink="/login" class="link link-dotted ttu">Войдите</a>
+  </div>
+  <p class="text -small">Пожалуйста, зарегистрируйтесь, чтобы пользоваться всеми возможностями сервиса</p>
+</header>
+<div class="menu" *ngIf="showMenu">
+  <div class="text">Каким типом клиента вы являетесь?</div>
+  <div class="menu-options">
+    <a routerLink="/signup/personal">
+      <wor-card widget class="-no-max-width">
+        <i class="ic ic-smile"></i>
+        <span>Физическое лицо</span>
+      </wor-card>
+    </a>
+    <a routerLink="/signup/company">
+      <wor-card widget class="-no-max-width">
+        <i class="ic ic-bag"></i>
+        <span>Юридическое лицо</span>
+      </wor-card>
+    </a>
+  </div>
+</div>
+<router-outlet></router-outlet>

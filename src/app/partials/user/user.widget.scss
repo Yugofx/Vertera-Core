@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  .user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 22px;
+    .icon {
+      &::before {
+        color: #fff;
+        font-size: 22px;
+      }
+    }
+    span {
+      margin-top: 6px;
+    }
+  }
+  .list {
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      span {
+        &:first-child {
+          color: transparentize(#fff, .3);
+        }
+        &:last-child {
+
+        }
+      }
+      + .list-item {
+        margin-top: 10px;
+      }
+    }
+  }
+}

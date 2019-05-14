@@ -1,0 +1,28 @@
+@import "../../../styles/vars";
+
+wor-card {
+  margin-bottom: 4rem;
+
+  .form-group {
+    [for="name"], [for="surname"] {
+      @media (min-width: 576px) {
+        max-width: 250px;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  .-right {
+    margin-left: auto;
+    @include media-breakpoint-down(xs) {
+      order: -1;
+      margin-bottom: 30px;
+    }
+  }
+}

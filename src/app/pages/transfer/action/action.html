@@ -1,0 +1,110 @@
+<ul class="advantage-list">
+  <li class="advantage-item item" *ngFor="let adv of advantages; let idx = index">
+    <div class="item-icon">
+      <i [class]="'ic ic-adv-' + (idx + 1)"></i>
+    </div>
+    <div class="item-text">
+      {{ adv.name }}
+      <br>
+      <small class="h5">{{ adv.value }}</small>
+    </div>
+  </li>
+</ul>
+<ng-container *ngIf="!isValidating; else summary">
+  <wor-card [divided]="true">
+    <div class="left">
+      <div class="form">
+        <div class="form-group">
+          <label for="wallet-number" class="form-group-name">
+            Укажите номер кошелька получателя:
+          </label>
+          <div class="form-group-controls">
+            <div class="tooltip is-open">
+              <input wor-input
+                     id="wallet-number"
+                     [formControl]="walletNumber"
+                     placeholder="Номер кошелька">
+              <div *ngIf="recipient"
+                   class="tooltip-msg">{{ recipient }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="total" class="form-group-name">Укажите сумму для отправления:</label>
+          <div class="form-group-controls double-controls">
+            <input wor-input
+                   id="total"
+                   [formControl]="total"
+                   placeholder="Сумма отправления">
+            <div class="fill">
+              <span class="ttu">СПЗ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="title h4 ttu">К оплате</div>
+      <ul class="features">
+        <li>
+          <span class="features-name">Комиссия:</span>
+          <span class="features-value">{{ commission | currency:'USD':'СПЗ':'1.0-4':'ru' }}</span>
+        </li>
+        <li>
+          <span class="features-name">Итого:</span>
+          <span class="features-value">{{ sum | currency:'USD':'СПЗ':'1.0-4':'ru' }}</span>
+        </li>
+      </ul>
+    </div>
+  </wor-card>
+  <footer class="footer">
+    <button class="-right"
+            (click)="validate()"
+            wor-button-raised
+            color="accent">
+      Далее
+    </button>
+  </footer>
+</ng-container>
+<ng-template #summary>
+  <ng-container *ngIf="!isConfirmed; else success">
+    <wor-card [divided]="true">
+      <div class="left">
+        <div class="form">
+          <div class="form-group">
+            <label for="code" class="form-group-name">
+              Введите код из СМС-сообщения
+              <small class="h5">Отправлено на номер</small>
+            </label>
+            <div class="form-group-controls">
+              <input wor-input
+                     id="code"
+                     placeholder="Код подтверждения"
+                     #code>
+            </div>
+          </div>
+          <button wor-button-raised
+                  (click)="send()"
+                  color="accent">Отправить</button>
+        </div>
+      </div>
+      <div class="right">
+        <p>Иногда для получения СМС-кода требуется подождать 5-10 минут.</p>
+        <p>Тем не менее, Вы можете прямо сейчас повторно попробовать получить новый СМС-код:</p>
+        <p>
+          <button class="link link-dotted">Отправить СМС-сообщение ещё раз</button>
+        </p>
+      </div>
+    </wor-card>
+  </ng-container>
+</ng-template>
+<ng-template #success>
+  <h2 class="h2 title">Средства отправлены</h2>
+  <div class="form-controls">
+    <button wor-button-stroke
+            (click)="back()"
+            color="blank">Вернуться назад</button>
+  </div>
+</ng-template>
+

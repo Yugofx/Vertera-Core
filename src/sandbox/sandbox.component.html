@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <aside class="navbar">
+    <nav>
+      <ul>
+        <li *ngFor="let route of routes">
+          <a [routerLink]="route.path">{{ route.name }}</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+

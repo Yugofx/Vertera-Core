@@ -1,0 +1,71 @@
+<table wor-table class="table-default" [dataSource]="dataSource | async">
+  <ng-container worColumnDef="id">
+    <th wor-header-cell *worHeaderCellDef>ID</th>
+    <td wor-cell *worCellDef="let element">
+      <span *ngIf="isSM">ID</span>
+      {{ element.id }}
+    </td>
+  </ng-container>
+  <ng-container worColumnDef="created_at">
+    <th wor-header-cell *worHeaderCellDef>Дата</th>
+    <td wor-cell *worCellDef="let element">
+      <span *ngIf="isSM">Дата</span>
+      {{ element.created_at | date:'dd.MM.yyyy' }}
+    </td>
+  </ng-container>
+  <ng-container worColumnDef="operation">
+    <th wor-header-cell *worHeaderCellDef>Тип операции</th>
+    <td wor-cell *worCellDef="let element">
+      <span *ngIf="isSM">Тип операции</span>
+      {{ dict[element.operation] }}
+    </td>
+  </ng-container>
+  <ng-container worColumnDef="sender">
+    <th wor-header-cell *worHeaderCellDef>Отправитель</th>
+    <td wor-cell *worCellDef="let element">
+      <span *ngIf="isSM">Отправитель</span>
+      <p>
+        <span>{{ element.sender.wallet_number }}</span>
+        <span>{{ element.sender.user }}</span>
+      </p>
+    </td>
+  </ng-container>
+  <ng-container worColumnDef="receiver">
+    <th wor-header-cell *worHeaderCellDef>Получатель</th>
+    <td wor-cell *worCellDef="let element">
+      <span *ngIf="isSM">Получатель</span>
+      <p>
+        <span>{{ element.receiver.wallet_number }}</span>
+        <span>{{ element.receiver.user }}</span>
+      </p>
+    </td>
+  </ng-container>
+  <ng-container worColumnDef="spz">
+    <th wor-header-cell *worHeaderCellDef>СПЗ</th>
+    <td wor-cell *worCellDef="let element">
+      <span *ngIf="isSM">СПЗ</span>
+      {{ element.spz | currency:element.code:'СПЗ':'1.0-4':'ru' }}
+    </td>
+  </ng-container>
+  <ng-container worColumnDef="status">
+    <th wor-header-cell *worHeaderCellDef>Статус</th>
+    <td wor-cell *worCellDef="let element">
+      <span *ngIf="isSM">Статус</span>
+      {{ dict[element.status] }}
+    </td>
+  </ng-container>
+  <ng-container worColumnDef="action">
+    <th wor-header-cell *worHeaderCellDef></th>
+    <td wor-cell *worCellDef="let element">
+      <button wor-button-raised
+              (click)="openOrder(element.id)"
+              color="accent">Подробнее</button>
+    </td>
+  </ng-container>
+
+  <tr wor-header-row *worHeaderRowDef="displayedColumns"></tr>
+  <tr wor-row
+      *worRowDef="let row; columns: displayedColumns;"
+      (click)="openOrder(row.id)">
+  </tr>
+</table>

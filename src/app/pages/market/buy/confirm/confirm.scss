@@ -1,0 +1,24 @@
+@import '../../../../styles/vars';
+
+.title {
+  margin-bottom: 45px;
+}
+
+wor-card {
+  margin-bottom: 40px;
+  @include media-breakpoint-down(sm) {
+    border: 1px solid #E0E0E0;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  .-right {
+    margin-left: auto;
+    @include media-breakpoint-down(xs) {
+      order: -1;
+      margin-bottom: 30px;
+    }
+  }
+}

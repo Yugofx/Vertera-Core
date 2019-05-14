@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .text {
+    margin: 0;
+    text-align: left;
+
+    &.-a70 {
+      opacity: .7;
+    }
+  }
+
+  li {
+    text-align: right;
+    & + li {
+      margin-top: 10px;
+    }
+  }
+}

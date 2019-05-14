@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="label">Standalone input component</div>
+  <div class="value">
+    <input wor-input
+           type="text"
+           placeholder="placeholder"
+           id="standalone" #standalone>
+  </div>
+  <div class="output">Output: {{ standalone.value }}</div>
+</div>
+
+<div class="row">
+  <div class="label">Input with filler</div>
+  <div class="value">
+    <div class="form">
+      <div class="form-group">
+        <div class="form-group-controls double-controls">
+          <input wor-input type="text" placeholder="Количество (минимум 1)" #fill>
+          <div class="fill">
+            <span class="ttu">СПЗ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="output">Output: {{ fill.value }}</div>
+</div>
+
+<div class="row">
+  <div class="label">Input with icon</div>
+  <div class="value">
+    <div class="form-group">
+      <div class="form-group-controls">
+        <div class="form-control-icons">
+          <input [type]="isPasswordVisible ? 'text' : 'password'" wor-input #pass>
+          <i class="icon ic-eye" (click)="togglePasswordVisibility()"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="output">Output: {{ pass.value }}</div>
+</div>
+
+<div class="row">
+  <div class="label">Textarea</div>
+  <div class="value">
+    <div class="form">
+      <div class="form-group w-full">
+        <div class="form-group-controls">
+          <textarea wor-input #textarea></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="output">Output: {{ textarea.value }}</div>
+</div>

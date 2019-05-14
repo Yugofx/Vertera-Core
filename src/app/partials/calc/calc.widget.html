@@ -1,0 +1,13 @@
+<div class="input">
+  <div class="input-wrapper">
+    <input type="number"
+           placeholder="Введите количество"
+           (input)="onInput($event)">
+  </div>
+  <div class="input-postfix">СПЗ</div>
+</div>
+<ul>
+  <li *ngFor="let item of currencies">
+    {{ getSum(item.rate) | currency:item.code:item.code:'1.0-4':'ru' }}
+  </li>
+</ul>

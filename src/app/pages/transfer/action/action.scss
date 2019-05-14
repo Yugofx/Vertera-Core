@@ -1,0 +1,78 @@
+@import '../../../styles/vars';
+
+.advantage {
+  &-list {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  &-item {
+    display: flex;
+    align-items: center;
+    width: 33.3333%;
+    @media (max-width: 640px) {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .item {
+      &-icon {
+        width: 48px;
+        height: 48px;
+      }
+      &-text {
+        width: calc(100% - 48px);
+        padding-left: 10px;
+        small {
+          display: block;
+          width: 100%;
+          margin-top: 2px;
+          color: #828282;
+        }
+      }
+    }
+  }
+}
+
+wor-card {
+  margin-bottom: 40px;
+  .right {
+    .title {
+      margin-bottom: 15px;
+    }
+    p {
+      color: #828282;
+      & + p {
+        margin-top: 14px;
+      }
+      .link {
+        text-align: left;
+        padding: 0;
+        cursor: pointer;
+      }
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .left, .right {
+      width: 100%;
+    }
+  }
+  @include media-breakpoint-down(xs) {
+    &, .left {
+      padding: 0 !important;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  .-right {
+    margin-left: auto;
+    @include media-breakpoint-down(xs) {
+      order: -1;
+      margin-bottom: 30px;
+    }
+  }
+}

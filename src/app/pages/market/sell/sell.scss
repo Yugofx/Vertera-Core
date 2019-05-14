@@ -1,0 +1,54 @@
+@import '../../../styles/vars.scss';
+
+wor-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 80px;
+  &::ng-deep .tab-wrapper {
+    margin-bottom: 3rem;
+  }
+  wor-tab {
+    width: 50%;
+    height: 40px;
+    line-height: 38px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 0;
+    font-size: 14px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: #333;
+    cursor: pointer;
+    &.-selected {
+      background-color: #f2f2f2;
+      cursor: default;
+    }
+    &:first-of-type {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    &:last-of-type {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    &:not(:first-of-type) {
+      border-left: 0;
+    }
+    @include media-breakpoint-down(xs) {
+      border: none;
+      background: none;
+      border-radius: 20px !important;
+      padding: 0 12px;
+      width: auto;
+      &.-selected {
+        background: linear-gradient(90deg,#3706ad 0,#a310b0 100%);
+        color: #fff;
+      }
+      & + wor-tab {
+        margin-left: 6px
+      }
+    }
+  }
+}

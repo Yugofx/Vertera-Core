@@ -1,0 +1,10 @@
+<div class="user">
+  <i class="icon ic-user"></i>
+  <span>Привет, {{ name }}</span>
+</div>
+<ul class="list">
+  <li class="list-item" *ngFor="let row of data">
+    <span>{{ row.name }}</span>
+    <span>{{ row.value }}</span>
+  </li>
+</ul>

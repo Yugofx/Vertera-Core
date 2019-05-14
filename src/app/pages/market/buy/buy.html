@@ -1,0 +1,84 @@
+<wor-tabs (tabChanges)="onTabChanges($event)">
+  <wor-tab [componentRef]="moneyRef">
+    {{ isSM ? 'Опр. количество СПЗ' : 'Купить определенное количество СПЗ' }}
+  </wor-tab>
+  <wor-tab [componentRef]="spzRef">
+    {{ isSM ? 'Опр. сумма' : 'Купить СПЗ на определенную сумму' }}
+  </wor-tab>
+</wor-tabs>
+<div class="table-wrapper">
+  <h2 class="title h2">Способы оплаты</h2>
+  <ul class="payment-list">
+    <li class="payment-section" *ngFor="let type of options">
+      <div class="table-wrapper">
+        <h4 class="title h4 ttu">{{ type.label }}</h4>
+        <div class="table">
+          <table wor-table class="table-default" [dataSource]="type.options">
+            <ng-container worColumnDef="type">
+              <th wor-header-cell *worHeaderCellDef>Тип</th>
+              <td wor-cell *worCellDef="let element" class="icon-type">
+                <i [class]="'ic ic-pay-' + element.type"></i>
+              </td>
+            </ng-container>
+
+            <ng-container worColumnDef="total">
+              <th wor-header-cell *worHeaderCellDef>Сумма</th>
+              <td wor-cell *worCellDef="let element">
+                <span *ngIf="isSM">Сумма</span>
+                {{userInput.total | currency:userInput.code:userInput.code:'1.0-4':'ru'}}
+              </td>
+            </ng-container>
+
+            <ng-container worColumnDef="commission-perc">
+              <th wor-header-cell *worHeaderCellDef>Комиссия, %</th>
+              <td wor-cell *worCellDef="let element">
+                <span *ngIf="isSM">Комиссия, %</span>
+                {{element.percent + '%'}}
+              </td>
+            </ng-container>
+
+            <ng-container worColumnDef="commission">
+              <th wor-header-cell *worHeaderCellDef>Комиссия</th>
+              <td wor-cell *worCellDef="let element">
+                <span *ngIf="isSM">Комиссия</span>
+                {{ getCommission(element.percent) | currency:userInput.code:userInput.code:'1.0-4':'ru' }}
+              </td>
+            </ng-container>
+
+            <ng-container worColumnDef="payoff">
+              <th wor-header-cell *worHeaderCellDef>Зачисление</th>
+              <td wor-cell *worCellDef="let element">
+                <span *ngIf="isSM">Зачисление</span>
+                {{ dict[element.payoff] }}
+              </td>
+            </ng-container>
+
+            <ng-container worColumnDef="result">
+              <th wor-header-cell *worHeaderCellDef>Будет зачислено</th>
+              <td wor-cell *worCellDef="let element">
+                <span *ngIf="isSM">Будет зачислено</span>
+                {{userInput.spz | currency:userInput.code:'СПЗ':'1.0-4':'ru'}}
+              </td>
+            </ng-container>
+
+            <ng-container worColumnDef="action">
+              <th wor-header-cell *worHeaderCellDef></th>
+              <td wor-cell *worCellDef="let element" class="btn-col">
+                <button wor-button-raised
+                        [disabled]="!userInput.total"
+                        (click)="buy(type.id, element.id)"
+                        color="accent">
+                  Оплатить
+                </button>
+              </td>
+            </ng-container>
+
+            <tr wor-header-row *worHeaderRowDef="displayedColumns"></tr>
+            <tr wor-row *worRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<router-outlet></router-outlet>

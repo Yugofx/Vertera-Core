@@ -1,0 +1,34 @@
+<wor-card [divided]="true">
+  <div class="left">
+    <div class="side-wrapper">
+      <div class="icon-container">
+        <img src="assets/icons/ic-suitcase.svg" alt="Паспорт юридического лица" class="svg">
+      </div>
+      <p class="title p-small ttu">Паспорт юридического лица</p>
+    </div>
+  </div>
+  <div class="right">
+    <div class="side-wrapper -column">
+      <p class="h4">Не верифицирован</p>
+      <a href="#" class="link link-dotted">Начать верификацию</a>
+    </div>
+  </div>
+</wor-card>
+<wor-card [divided]="true">
+  <div class="left">
+    <div class="side-wrapper">
+      <div class="icon-container">
+        <img src="assets/icons/ic-phone.svg" alt="номер телефона" class="svg">
+      </div>
+      <p class="title p-small ttu">
+        Номер телефона
+        <span>{{ phoneNumber | phone:true }}</span>
+      </p>
+    </div>
+  </div>
+  <div class="right">
+    <div class="side-wrapper">
+      <p class="h4">Верифицирован</p>
+    </div>
+  </div>
+</wor-card>

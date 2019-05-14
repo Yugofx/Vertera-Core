@@ -1,0 +1,52 @@
+<h2 class="title h2">Подтверждение</h2>
+<wor-card>
+  <ul class="features features-table">
+    <li>
+      <span class="features-name">Способ оплаты</span>
+      <span class="features-value">{{ draft.label }}</span>
+    </li>
+    <li>
+      <span class="features-name">Тип</span>
+      <span class="features-value">{{ dict[draft.type] }}</span>
+    </li>
+    <li>
+      <span class="features-name">Сумма</span>
+      <span class="features-value">{{ draft.total | currency:draft.code:draft.code:'1.0-4':'ru' }}</span>
+    </li>
+    <li>
+      <span class="features-name">Валюта</span>
+      <span class="features-value">{{ dict[draft.code] + ' (' + draft.code + ')' }}</span>
+    </li>
+    <li>
+      <span class="features-name">Комиссия, %</span>
+      <span class="features-value">{{ draft.percent + '%' }}</span>
+    </li>
+    <li>
+      <span class="features-name">Комиссия</span>
+      <span class="features-value">
+        {{ getCommission() | currency:draft.code:draft.code:'1.0-4':'ru' }}
+      </span>
+    </li>
+    <li>
+      <span class="features-name">Срок зачисления</span>
+      <span class="features-value">{{ dict[draft.payoff] }}</span>
+    </li>
+    <li>
+      <span class="features-name">Количество приобретаемого СПЗ</span>
+      <span class="features-value">{{ draft.spz | currency:draft.code:'СПЗ':'1.0-4':'ru' }}</span>
+    </li>
+  </ul>
+</wor-card>
+<footer class="footer">
+  <button wor-button-stroke
+          (click)="back()"
+          color="blank">
+    Вернуться назад
+  </button>
+  <button class="-right"
+          (click)="finish()"
+          wor-button-raised
+          color="accent">
+    Перейти к оплате
+  </button>
+</footer>

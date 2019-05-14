@@ -1,0 +1,6 @@
+<p class="text -a70">1 СПЗ =</p>
+<ul>
+  <li *ngFor="let item of currencies">
+    {{ item.rate | currency:item.code:item.code:'1.2-4':'ru' }}
+  </li>
+</ul>

@@ -1,0 +1,93 @@
+<ul class="advantage-list">
+  <li class="advantage-item item" *ngFor="let adv of advantages; let idx = index">
+    <div class="item-icon">
+      <i [class]="'ic ic-adv-' + (idx + 1)"></i>
+    </div>
+    <div class="item-text">
+      {{ adv.name }}
+      <br>
+      <small class="h5">{{ adv.value }}</small>
+    </div>
+  </li>
+</ul>
+<wor-card class="exchange-input"
+          [divided]="true"
+          [openBordersOnMobile]="true">
+  <div class="left">
+    <div class="form">
+      <div class="form-group">
+        <label class="form-group-name">Введите количество СПЗ для продажи:</label>
+        <div class="form-group-controls double-controls">
+          <input wor-input
+                 type="text"
+                 (input)="onInput($event)"
+                 class="form-control"
+                 placeholder="Сумма">
+          <div class="fill">
+            <span class="ttu">СПЗ</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-group-name">Выберите валюту для вывода средств:</label>
+        <div class="form-group-controls">
+          <wor-select (valueChange)="onCodeChange($event)">
+            <wor-option *ngFor="let c of currencies"
+                        [value]="c.code"
+                        [viewOption]="c.label + ' (' + c.code + ')'">
+            </wor-option>
+          </wor-select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="title h4 ttu">Стоимость указанного СПЗ</div>
+    <ul class="currency-list">
+      <li *ngFor="let item of currencies" [class.-active]="activeCode === item.code">
+        <span class="currency-name">{{ item.label }}</span>
+        <span class="currency-value">{{ getSum(item.rate) | currency:item.code:item.code:'1.0-4':'ru' }}</span>
+      </li>
+    </ul>
+  </div>
+</wor-card>
+<wor-card [openBordersOnMobile]="true">
+  <form class="form" [formGroup]="fg">
+    <div class="form-group">
+      <label for="card" class="form-group-name">Укажите номер карты получателя:</label>
+      <div class="form-group-controls">
+        <input wor-input
+               formControlName="card"
+               type="text"
+               id="card">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-group-name">Сумма к зачислению:</label>
+      <div class="form-group-controls double-controls">
+        <input wor-input
+               type="text"
+               [readonly]="true"
+               class="form-control"
+               [formControl]="total"
+               placeholder="Сумма">
+        <div class="fill">
+          <span class="ttu">{{ activeCode || 'СПЗ' }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <wor-checkbox formControlName="save">
+        Сохранить реквизиты получателя
+      </wor-checkbox>
+    </div>
+  </form>
+</wor-card>
+<footer class="footer">
+  <button class="-right"
+          [disabled]="fg.invalid || !activeCode || !spzSellValue"
+          wor-button-raised
+          color="accent">
+    Продолжить
+  </button>
+</footer>

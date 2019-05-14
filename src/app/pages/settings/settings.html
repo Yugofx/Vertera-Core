@@ -1,0 +1,17 @@
+<header class="header">
+  <h1 class="h1 title">Мой профиль</h1>
+</header>
+<div class="steps">
+  <nav class="steps-nav -small">
+    <ul>
+      <li *ngFor="let tab of tabs">
+        <a [routerLink]="tab.route"
+           class="link h-grt ttu"
+           routerLinkActive="-active">
+          {{ tab.label }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<router-outlet></router-outlet>

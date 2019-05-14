@@ -1,0 +1,35 @@
+<table wor-table [dataSource]="dataSource" class="table-default">
+
+  <ng-container worColumnDef="id">
+    <th wor-header-cell *worHeaderCellDef>ID</th>
+    <td wor-cell *worCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container worColumnDef="date">
+    <th wor-header-cell *worHeaderCellDef>Дата</th>
+    <td wor-cell *worCellDef="let element"> {{element.date}} </td>
+  </ng-container>
+
+  <ng-container worColumnDef="operation">
+    <th wor-header-cell *worHeaderCellDef>Тип операции</th>
+    <td wor-cell *worCellDef="let element"> {{element.operation }} </td>
+  </ng-container>
+
+  <ng-container worColumnDef="sum">
+    <th wor-header-cell *worHeaderCellDef>Сумма</th>
+    <td wor-cell *worCellDef="let element"> {{element.sum}} </td>
+  </ng-container>
+
+  <ng-container worColumnDef="spz">
+    <th wor-header-cell *worHeaderCellDef>СПЗ</th>
+    <td wor-cell *worCellDef="let element"> {{element.spz}} </td>
+  </ng-container>
+
+  <ng-container worColumnDef="status">
+    <th wor-header-cell *worHeaderCellDef>Статус</th>
+    <td wor-cell *worCellDef="let element"> {{element.status}} </td>
+  </ng-container>
+
+  <tr wor-header-row *worHeaderRowDef="displayedColumns"></tr>
+  <tr wor-row *worRowDef="let row; columns: displayedColumns;"></tr>
+</table>

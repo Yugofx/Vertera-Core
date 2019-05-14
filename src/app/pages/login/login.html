@@ -1,0 +1,58 @@
+<header class="header">
+  <h1 class="h1 title">Авторизация</h1>
+  <div class="header-tip h5 ttu">
+    Ещё нет учётной записи?
+    <a routerLink="/signup" class="link link-dotted ttu">Зарегистрируйтесь</a>
+  </div>
+</header>
+<wor-card *ngIf="error" [style.marginBottom]="'4rem'">
+  <div class="title">Неверный логин или пароль</div>
+  <p class="text">Пожалуйста, попробуйте ещё раз</p>
+</wor-card>
+<wor-card [openBordersOnMobile]="true" *ngIf="!isAuthorized">
+  <iframe id="loginFrame"
+          src="https://dev.id.vertera.org/?service=wor-dev&across=1&return=http://localhost:4200">
+  </iframe>
+  <!--<form>-->
+    <!--<div [formGroup]="loginForm"-->
+         <!--class="form-group">-->
+      <!--<label for="mail" class="form-group-name">Электронная почта</label>-->
+      <!--<div class="form-group-controls">-->
+        <!--<input [formControl]="email"-->
+               <!--type="email"-->
+               <!--[required]="true"-->
+               <!--wor-input-->
+               <!--id="mail">-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+      <!--<label for="pass" class="form-group-name">Пароль</label>-->
+      <!--<div class="form-group-controls">-->
+        <!--<div class="form-control-icons">-->
+          <!--<input [formControl]="password"-->
+                 <!--id="pass"-->
+                 <!--[required]="true"-->
+                 <!--[type]="isPasswordVisible ? 'text' : 'password'"-->
+                 <!--wor-input>-->
+          <!--<i class="icon ic-eye"-->
+             <!--[class.-active]="isPasswordVisible"-->
+             <!--(click)="togglePasswordVisibility()">-->
+          <!--</i>-->
+        <!--</div>-->
+        <!--<div class="link-wrapper">-->
+          <!--<a routerLink="/reset" class="link link-dotted">Забыли пароль?</a>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</form>-->
+</wor-card>
+<!--<footer class="footer">
+  <button class="-right"
+          wor-button-raised
+          color="accent"
+          (click)="submit()">
+    Войти
+  </button>
+</footer>-->
+

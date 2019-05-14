@@ -1,0 +1,15 @@
+@import '../../../../styles/vars';
+
+:host {
+  width: 100%;
+}
+
+wor-card {
+  @include media-breakpoint-down(sm) {
+    padding: 0 !important;
+  }
+}
+
+wor-select {
+  color: #828282;
+}

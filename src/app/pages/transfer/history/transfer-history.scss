@@ -1,0 +1,14 @@
+p {
+  display: flex;
+  flex-direction: column;
+  span {
+    &:first-child {
+      color: #333;
+    }
+    &:last-child {
+      font-size: 13px;
+      line-height: 17px;
+      color: #828282;
+    }
+  }
+}

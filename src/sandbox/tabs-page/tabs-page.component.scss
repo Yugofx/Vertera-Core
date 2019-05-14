@@ -1,0 +1,12 @@
+@import '../common';
+
+wor-tab {
+  display: inline-block;
+  cursor: pointer;
+  &.-selected {
+    color: #7a43b6;
+  }
+  & + & {
+    margin-left: 20px;
+  }
+}
